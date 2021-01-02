@@ -11,7 +11,21 @@ class DBReader():
         result = self.cursor.fetchall()
         return result
 
+    def contains(self, field, word):
+        print('SELECT * FROM news WHERE {} LIKE \'%{}%\''.format(field, word))
+        self.cursor.execute('SELECT * FROM news WHERE {} LIKE \'%{}%\''.format(field, word))
+        result = self.cursor.fetchall()
+        return result
+
+    def fields(self):
+        self.cursor.execute('PRAGMA table_info(news)')
+        result = self.cursor.fetchall()
+        return result
+
 if __name__ == "__main__":
     db_reader = DBReader()
-    news_list = db_reader.get()
-    print(news_list[0])
+    # news_list = db_reader.get()
+    # fields = db_reader.fields()
+    raws = db_reader.contains('content','에코프로비엠')
+    print(len(raws))
+    # print(raws)
