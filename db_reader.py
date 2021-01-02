@@ -1,9 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
-import datetime
 import sqlite3
-import time
-import tqdm
 
 class DBReader():
     def __init__(self, db_name='news.db'):
