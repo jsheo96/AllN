@@ -146,3 +146,6 @@ dmypy.json
 
 # IntelliJ
 .idea/
+
+#database
+news.db

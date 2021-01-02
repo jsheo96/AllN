@@ -6,8 +6,11 @@ from django.template import loader
 
 
 def index(request):
+    return render(request, 'stock/index.html')
+
+def database(request):
     context = {}
-    template = loader.get_template('stock/index.html')
+    template = loader.get_template('stock/database.html')
     return HttpResponse(template.render(context, request))
 
 def db(request):
