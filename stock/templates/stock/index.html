@@ -17,16 +17,15 @@
                 height: 100%;
             }
             body{
+                margin: 0px;
+                padding: 0px;
                 height:100%;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+            }    
             .container{
                 display: flex;
                 flex-direction: column;
-                width: 700px;
-/*                border: 1px solid gray;*/
+                margin: auto;
             }
             
             #comp_header{
@@ -37,21 +36,31 @@
                 border-bottom: 6px double gray;                
             }
             
+            .content{
+                width: 700px;
+            }
             
             nav{
-/*                border-bottom: 1px solid gray;*/
                 text-align: right;
                 padding-bottom: 5px;
             }
             
-            #stock_disp{
-                padding: 15px;
+            #stock_wrapper{
+                border: 1px solid gray;
                 background-color: rgb(217,217,217);
 /*                border: 3px solid gray;*/
             }
             
+            #stock_box{
+                padding: 10px;
+                margin: 15px 15px 0px 15px;
+                border: 1px solid gray;
+/*                padding: 15px;*/
+            }
+            
             .news_content{
                 background-color: rgb(242,242,242);
+                border: 1px dotted gray;
             }
             
             #issue_header{
@@ -64,15 +73,20 @@
                 border-bottom: 3px dotted gray;
             }
             
-            .info>header{
-                padding-left : 10px;
+            .info>h3{
+                margin: 0px;
+                padding: 15px;
+                border-top: 1px solid gray;
                 border-bottom: 1px solid gray;
-/*                color: blue;    */
             }
-            .articles{
-                border-bottom: 1px solid gray;
-                padding: 10px;
-                
+            
+            #article_box{
+                margin: 10px;
+                border: 1px solid #aaa;
+            }
+            
+            .box{
+                background-color: white;            
             }
         
         </style>
@@ -90,39 +104,54 @@
                 </nav>
                 
                 <main class="in_content">                  
-                    <section id="stock_disp">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus ratione, praesentium est, autem eius dolore quod incidunt architecto? Harum, amet, ea. Quasi, ea. Alias iste consequuntur beatae, velit ipsum pariatur maxime vel odit, temporibus atque amet? Rem veniam recusandae, voluptas doloremque doloribus ipsum perspiciatis sunt laborum, quidem quas expedita illo quasi ex nobis quam porro tenetur cumque quod totam minus, natus nulla autem dolorem ratione! Cupiditate vero consequuntur, perferendis eaque, a porro ducimus suscipit voluptates magnam nobis voluptas odit incidunt molestiae! Reprehenderit maxime consectetur itaque perspiciatis facere, optio dolorem ipsum nihil ea similique. Minima quidem, assumenda eveniet, quam praesentium quisquam!
-                    </section>
+                    <div id="stock_wrapper">
+                        <div id="stock_box" class="box">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus ratione, praesentium est, autem eius dolore quod incidunt architecto? Harum, amet, ea. Quasi, ea. Alias iste consequuntur beatae, velit ipsum pariatur maxime vel odit, temporibus atque amet? Rem veniam recusandae, voluptas doloremque doloribus ipsum perspiciatis sunt laborum, quidem quas expedita illo quasi ex nobis quam porro tenetur cumque quod totam minus, natus nulla autem dolorem ratione! Cupiditate vero consequuntur, perferendis eaque, a porro ducimus suscipit voluptates magnam nobis voluptas odit incidunt molestiae! Reprehenderit maxime consectetur itaque perspiciatis facere, optio dolorem ipsum nihil ea similique. Minima quidem, assumenda eveniet, quam praesentium quisquamff
+                        </div>   
+                        날짜 스케일 / 종목 섹션 탭
+                    </div>
                     
                     <section class="news_content">   
-                       
+                        버튼 누르기
 <!--                        <button>접기</button>-->
                         <header id="issue_header">
                             <h2>선택이슈:</h2>
                         </header>
                         
-                        <section class="fact_opinion_content">
+                        <div class="fact_opinion_content">
 
                             <section class="info">
-                                <header>
-                                    <h3>FACT</h3>
-                                </header>
-                                <article class="articles">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, nostrum.
-                                </article>
+                                <h3>FACT</h3>
+                                <div id="article_box" class="box">
+                                    <article class="articles">
+                                        <ul>
+                                            <li>대한항공 아시아나 인수</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                        </ul>
+                                    </article> 
+                                </div>
 
                             </section>
                             
                             <section class="info">
-                                <header>
-                                    <h3>OPINION</h3>
-                                </header>
-                                <article class="articles">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, autem.
-                                </article>
+                                <h3>OPINION</h3>
+                                <div id="article_box" class="box">
+                                    <article class="articles">
+                                        <ul>
+                                            <li>대한항공 아시아나 인수</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                        </ul>
+                                    </article> 
+                                </div>
                             </section>
                             
-                        </section>
+                        </div>
                     </section>
                 </main>
                 
