@@ -5,4 +5,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Stock information...sdfssdsadflkajsflajksdf.")
+    return render(request, 'index.html')
+#    return HttpResponse("Stock information...sdfssdsadflkajsflajksdf.")
