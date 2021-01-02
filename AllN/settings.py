@@ -91,7 +91,7 @@ DATABASES = {
 #
 #         'USER': 'jsheo',
 #
-#         'PASSWORD': 'gj171768!',
+#         'PASSWORD': 'asas',
 #
 #         'HOST': 'localhost',
 #
