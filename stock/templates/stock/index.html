@@ -10,23 +10,25 @@
         
 <!--        <link rel="stylesheet" href="../../static/css/test.css">-->
 <!--        <link rel="stylesheet" href="{% static 'css/test.css' %}">  django에서 사용-->
-
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300&display=swap" rel="stylesheet">
        
         <style>
             html{
+                font-family: 'Roboto', 'Nanum Gothic', sans-serif;
+                box-sizing: border-box;
                 height: 100%;
             }
             body{
+                margin: 0px;
+                padding: 0px;
                 height:100%;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+            }    
             .container{
                 display: flex;
                 flex-direction: column;
-                width: 700px;
-/*                border: 1px solid gray;*/
+                margin: auto;
+                
             }
             
             #comp_header{
@@ -37,42 +39,117 @@
                 border-bottom: 6px double gray;                
             }
             
+            .content{
+                width: 700px;
+            }
             
             nav{
-/*                border-bottom: 1px solid gray;*/
                 text-align: right;
                 padding-bottom: 5px;
             }
             
-            #stock_disp{
-                padding: 15px;
+            .in_content{
+                box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.75);
+            }
+            
+            #stock_wrapper{
+                border: 1px solid gray;
                 background-color: rgb(217,217,217);
 /*                border: 3px solid gray;*/
             }
             
-            .news_content{
-                background-color: rgb(242,242,242);
+            #stock_box{
+                padding: 10px;
+                margin: 15px 15px 0px 15px;
+                border: 1px solid gray;
+                
+/*                padding: 15px;*/
             }
+            
+            .date_type{
+            }
+            
+            .date_scale{
+                float: left;
+                padding: 10px;
+                padding-left: 20px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                
+            }
+            
+            .news_type{
+                text-align: right;
+                padding: 10px;
+                padding-right: 20px;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+            
+            .news_tab{
+                
+                background-color: #eee;               
+                color: #444;
+                cursor: pointer;
+                padding: 10px;
+                padding-left: 20px;
+                width: 100%;
+                text-align: left;
+                border: none;
+                outline: none;
+                border-bottom: 1px dotted gray;
+                font-size: 1.2rem;
+                transition: 0.2s;                
+            }
+            
+/*            -------------------------*/
+            .active, .news_tab:hover {
+              background-color: #ccc;
+            }
+            .news_tab:after {
+                content: '\02795';  Unicode character for "plus" sign (+) 
+                font-size: 10px;
+                color: #777;
+                float: right;
+                margin: 1px;
+            }            
+            .active:after {
+              content: "\2796"; /* Unicode character for "minus" sign (-) */
+            }            
+            .news_wrapper{
+/*                display: none;              */
+                background-color: rgb(242,242,242);             
+                border: 1px dotted style="clear:both;"
+                max-height: 0;
+                overflow: hidden;        
+                transition: max-height 0.2s ease-out;
+            }
+            
+/*            -----------------------------*/
             
             #issue_header{
                 text-align: center;
-                padding-top: 10px;
-                padding-bottom: 10px;
+                padding: 15px;
             }
             #issue_header>h2{
                 display: inline;
                 border-bottom: 3px dotted gray;
             }
             
-            .info>header{
-                padding-left : 10px;
+            .info>h3{
+                margin: 0px;
+                padding: 15px;
+                border-top: 1px solid gray;
                 border-bottom: 1px solid gray;
-/*                color: blue;    */
             }
-            .articles{
-                border-bottom: 1px solid gray;
-                padding: 10px;
-                
+            
+            #article_box{
+                margin: 10px;
+                border: 1px solid #aaa;
+            }
+            
+            .box{
+                background-color: white;            
             }
         
         </style>
@@ -86,49 +163,78 @@
 
             <section class="content">
                 <nav>
+<!--                   form tag-->
                     <input type="text" name="comp_name" value="" placeholder="기업이름">
+                    <input type="submit" name="submit" value="검색">
                 </nav>
                 
                 <main class="in_content">                  
-                    <section id="stock_disp">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus ratione, praesentium est, autem eius dolore quod incidunt architecto? Harum, amet, ea. Quasi, ea. Alias iste consequuntur beatae, velit ipsum pariatur maxime vel odit, temporibus atque amet? Rem veniam recusandae, voluptas doloremque doloribus ipsum perspiciatis sunt laborum, quidem quas expedita illo quasi ex nobis quam porro tenetur cumque quod totam minus, natus nulla autem dolorem ratione! Cupiditate vero consequuntur, perferendis eaque, a porro ducimus suscipit voluptates magnam nobis voluptas odit incidunt molestiae! Reprehenderit maxime consectetur itaque perspiciatis facere, optio dolorem ipsum nihil ea similique. Minima quidem, assumenda eveniet, quam praesentium quisquam!
-                    </section>
+                    <div id="stock_wrapper">
+                        <div id="stock_box" class="box">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus ratione, praesentium est, autem eius dolore quod incidunt architecto? Harum, amet, ea. Quasi, ea. Alias iste consequuntur beatae, velit ipsum pariatur maxime vel odit, temporibus atque amet? Rem veniam recusandae, voluptas doloremque doloribus ipsum perspiciatis sunt laborum, quidem quas expedita illo quasi ex nobis quam porro tenetur cumque quod totam minus, natus nulla autem dolorem ratione! Cupiditate vero consequuntur, perferendis eaque, a porro ducimus suscipit voluptates magnam nobis voluptas odit incidunt molestiae! Reprehenderit maxime consectetur itaque perspiciatis facere, optio dolorem ipsum nihil ea similique. Minima quidem, assumenda eveniet, quam praesentium quisquamff
+                        </div>   
+                        
+                        <div class="date_type">
+                            <div class="date_scale">
+                                날짜 스케일
+                            </div>
+
+                            <div class="news_type">
+                                종목 <input type="checkbox" name="news_type" value="stock_item" style="cursor: pointer;">  
+                                섹터 <input type="checkbox" name="news_type" value="stock_sector" style="cursor: pointer;"> 
+    <!--                            이후 input 주어지면 요청필요                                 -->
+                            </div>    
+                        </div>
+                        
+                    </div>
                     
-                    <section class="news_content">   
-                       
-<!--                        <button>접기</button>-->
+                    <button class='news_tab'> 접기</button>                      
+                    
+                    <section class="news_wrapper" style="clear:both">          
                         <header id="issue_header">
                             <h2>선택이슈:</h2>
                         </header>
                         
-                        <section class="fact_opinion_content">
+                        <div class="fact_opinion_content">
 
                             <section class="info">
-                                <header>
-                                    <h3>FACT</h3>
-                                </header>
-                                <article class="articles">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, nostrum.
-                                </article>
+                                <h3>FACT</h3>
+                                <div id="article_box" class="box">
+                                    <article class="articles">
+                                        <ul>
+                                            <li>대한항공 아시아나 인수</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                        </ul>
+                                    </article> 
+                                </div>
 
                             </section>
                             
                             <section class="info">
-                                <header>
-                                    <h3>OPINION</h3>
-                                </header>
-                                <article class="articles">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, autem.
-                                </article>
+                                <h3>OPINION</h3>
+                                <div id="article_box" class="box">
+                                    <article class="articles">
+                                        <ul>
+                                            <li>대한항공 아시아나 인수</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                            <li>...</li>
+                                        </ul>
+                                    </article> 
+                                </div>
                             </section>
                             
-                        </section>
+                        </div>
                     </section>
                 </main>
                 
             </section>
         </div>
         
-        
+
     </body>
 </html>
