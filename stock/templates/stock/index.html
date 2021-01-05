@@ -158,14 +158,17 @@
     <body>
         <div class="container">
             <header id="comp_header">
-                <h1>대한항공</h1>                
+                <h1>{{comp_name}}</h1>                
             </header>
 
             <section class="content">
                 <nav>
 <!--                   form tag-->
-                    <input type="text" name="comp_name" value="" placeholder="기업이름">
-                    <input type="submit" name="submit" value="검색">
+                    <form action="" method="get">
+                       {% csrf_token %}
+                        <input type="text" name="comp_name" value="" placeholder="기업이름">
+                        <input type="submit" value="검색">
+                    </form>
                 </nav>
                 
                 <main class="in_content">                  
