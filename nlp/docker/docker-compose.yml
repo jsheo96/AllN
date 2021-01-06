@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nlp:
+    build:
+      context: .
+    image: alln/nlp_krbert:cu101-cudnn7
+    container_name: nlp
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /hdd1:/hdd1:rw
+      - /hdd2:/hdd2:rw
+      - /hdd3:/hdd3:rw
+    environment:
+      - DISPLAY=$DISPLAY
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - "26006:6006"
+      - "28080:8080"
+      - "28888:8888"
+    runtime: nvidia
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    command:
+      - bash
