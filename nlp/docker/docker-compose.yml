@@ -14,9 +14,9 @@ services:
       - DISPLAY=$DISPLAY
       - NVIDIA_VISIBLE_DEVICES=all
     ports:
-      - "26006:6006"
-      - "28080:8080"
-      - "28888:8888"
+      - "16006:6006"
+      - "18080:8080"
+      - "18888:8888"
     runtime: nvidia
     ipc: host
     ulimits:
