@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--{% load static %}-->
+{% load static %}
 <html>
     <head>
         <title>팩트와 의견으로 보는 믿을 수 있는 종목별 이슈 정보 서비스</title>    
@@ -27,8 +27,7 @@
             .container{
                 display: flex;
                 flex-direction: column;
-                margin: auto;
-                
+                margin: 100px auto 0px;
             }
             
             #comp_header{
@@ -55,15 +54,12 @@
             #stock_wrapper{
                 border: 1px solid gray;
                 background-color: rgb(217,217,217);
-/*                border: 3px solid gray;*/
             }
             
             #stock_box{
                 padding: 10px;
                 margin: 15px 15px 0px 15px;
                 border: 1px solid gray;
-                
-/*                padding: 15px;*/
             }
             
             .date_type{
@@ -103,23 +99,29 @@
             }
             
 /*            -------------------------*/
-            .active, .news_tab:hover {
+            .active:hover, .news_tab:hover {
               background-color: #ccc;
             }
             .news_tab:after {
-                content: '\02795';  Unicode character for "plus" sign (+) 
-                font-size: 10px;
+                content: '\02795'; /* Unicode character for "plus" sign (+) */
+                font-size: 1.2rem;
                 color: #777;
                 float: right;
                 margin: 1px;
-            }            
+            }
+            
             .active:after {
-              content: "\2796"; /* Unicode character for "minus" sign (-) */
+                content: "\2796"; /* Unicode character for "minus" sign (-) */
+                font-size: 1.2rem;
+                color: #777;
+                float: right;
+                margin: 1px;                
             }            
+            
             .news_wrapper{
 /*                display: none;              */
                 background-color: rgb(242,242,242);             
-                border: 1px dotted style="clear:both;"
+                border: 1px dotted style="clear:both";
                 max-height: 0;
                 overflow: hidden;        
                 transition: max-height 0.2s ease-out;
@@ -191,7 +193,7 @@
                         
                     </div>
                     
-                    <button class='news_tab'> 접기</button>                      
+                    <button class="news_tab"> 펼치기</button>                      
                     
                     <section class="news_wrapper" style="clear:both">          
                         <header id="issue_header">
@@ -238,6 +240,8 @@
             </section>
         </div>
         
+        <script src='../../static/js/unfold_fold.js'></script>
+<!--        <script src={% static 'js/unfold_fold.js' %}></script>-->
 
     </body>
 </html>
