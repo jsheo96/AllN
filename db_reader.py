@@ -25,8 +25,9 @@ class DBReader():
 
 if __name__ == "__main__":
     db_reader = DBReader()
-    # news_list = db_reader.get()
-    # fields = db_reader.fields()
-    raws = db_reader.contains('content','에코프로비엠')
-    print(len(raws))
-    # print(raws)
+    #news_list = db_reader.get()
+    #fields = db_reader.fields()
+#    [(0, 'date', 'text', 0, None, 0), (1, 'field', 'text', 0, None, 0), (2, 'title', 'text', 0, None, 0), (3, 'content', 'text', 0, None, 0), (4, 'url', 'text', 0, None, 1)]
+    raws = db_reader.contains('content','대한항공')
+    #print(len(raws))
+    print(raws)

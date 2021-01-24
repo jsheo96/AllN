@@ -46,6 +46,17 @@
                 text-align: right;
                 padding-bottom: 5px;
             }
+            #stock_select{
+                margin-right: 10px;
+/*                margin-bottom: 2px;*/
+                width: 150px;
+                padding: 0.1rem;
+                border: 1px solid #999;
+                font-family: inherit;
+                border-radius: 0px;
+                text-align: center;
+                
+            }
             
             .in_content{
                 box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.75);
@@ -220,23 +231,36 @@
     <body>
         <div class="container">
             <header id="comp_header">
-                <h1>{{comp_name}}</h1>                
+                <h1>{{stock_name}}</h1>                
             </header>
 
             <section class="content">
                 <nav>
-<!--                   form tag-->
-                    <form action="" method="get">
+                
+<!--                   form tag-->   
+                    <form action="" method="post">
                        {% csrf_token %}
-                        <input type="text" name="comp_name" value="" placeholder="기업이름">
+                        
+                        <select name="stock_name" id="stock_select">
+                            <option value="" selected disabled hidden>== 기업선택 ==</option>
+                        {% for stock in stocks%}
+                            <option value="{{stock.name}} {{stock.stock_id}}">{{ stock.name }}</option>
+                        {% endfor %}
+                        
                         <input type="submit" value="검색">
-                    </form>
+                        
+                        </select>
+                        
+                    </form>                
                 </nav>
                 
                 <main class="in_content">                  
                     <div id="stock_wrapper">
                         <div id="stock_box" class="box">
-                            차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다. 차트가 들어갈 예정입니다.
+                            {% for issue in issues %}
+                                {{ issue }}
+                                <br><br>
+                            {% endfor %}
                         </div>   
                         
                         <div class="date_type">
