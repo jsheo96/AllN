@@ -2,10 +2,11 @@
 프론트엔드/백엔드 간의 원활한 연동을 위하여 데이터 베이스 구조를 설계했습니다.
 더미 데이터를 만드는 데 사용한 jupyter notebook 파일을 첨부합니다. 참고하시기 바랍니다.
 
-## 기본 구조
+## 기본 구조 및 참고 사항
 sql 데이터베이스에 dictionary파일을 저장하기 위해 json을 형식을 이용하였습니다.
 .db 파일은 StockDB, IssueDB, NewsDB 세 개의 테이블로 구성됩니다.
-각 테이블에 있는 data 항목은 json.loads()를 이용해 dictionary 로 변환하여 사용할 수 있습니다.
+각 테이블에 있는 data 항목은 <ins>json.loads()를 이용해 dictionary로 변환</ins>하여 사용할 수 있습니다.
+그리고 <ins>datetime.datetime.strptime()을 이용해 날짜를 인식</ins>할 수 있습니다.
 
 ## StockDB
 ```
