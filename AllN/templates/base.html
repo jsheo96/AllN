@@ -244,7 +244,7 @@
                         <select name="stock_name" id="stock_select">
                             <option value="block" selected disabled hidden>== 기업선택 ==</option>
                         {% for stock in stocks%}
-                            <option value="{{stock.name}} {{stock.stock_id}}">{{stock.stock_id}}{{ stock.name }}</option>
+                            <option value="{{stock.name}} {{stock.stock_id}}">{{ stock.name }}</option>
                         {% endfor %}
                         
                         <input type="submit" value="검색" id="stock_submit">
