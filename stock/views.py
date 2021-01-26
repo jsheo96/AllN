@@ -20,28 +20,28 @@ def issueFind(stock_id):
     for issue_number in issue_numbers:
         
         issue_list.append(issues[issue_number].issue)
-    
+        issue_data = json.loads(issues[issue_number].data)
     return(issue_list)
 
 
 
 def index(request):
-
-    
-    if request.method == "POST":
-        stock_search = request.POST["stock_name"]
-        stock_info = stock_search.split()
-        stock_name = stock_info[0]
-        stock_id = stock_info[1]
-        
-        issue_list = issueFind(stock_id)
-        
-        return render(request, 'stock/index.html', {"stocks": stocks,"stock_name": stock_name, "issues": issue_list})
-
-    else:
-        stock_name = request.GET.get('stock_name')
-
     return render(request, 'stock/index.html', {"stocks": stocks})
+    
+
+def stock(request): 
+    try: 
+        if (request.method == "POST"):
+            stock_search = request.POST["stock_name"]
+            print(stock_search)
+            stock_info = stock_search.split()
+            stock_name = stock_info[0]
+            stock_id = stock_info[1]
+            issue_list = issueFind(stock_id)
+
+            return render(request, 'stock/stock.html', {"stocks": stocks,"stock_name": stock_name, "issues": issue_list})
+    except: return redirect('index')  
+
 
 def database(request):
     context = {}
@@ -51,7 +51,3 @@ def database(request):
 def db(request):
     response = FileResponse(open('/home/jsheo/AllN/news.db', 'rb'))
     return response
-#
-#def stock(request, number): 
-#    stock = get_object_or_404(Stock, code=number)
-#    return render(request, 'stock/stock.html', {'stock':stock})
