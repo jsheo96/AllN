@@ -231,20 +231,22 @@
     <body>
         <div class="container">
             <header id="comp_header">
-                <h1>{{stock_name}}</h1>                
+                <h1>{{stock_obj.name}}</h1>                
             </header>
 
             <section class="content">
                 <nav>
                 
 <!--                   form tag-->   
-                    <form action="{% url 'stock' %}" method="post" onsubmit="blockSubmit();">
+                   
+                    <form id="stock_select_form" action="{% url 'index' %}" method="post" onsubmit="blockSubmit();">
                        {% csrf_token %}
                         
                         <select name="stock_name" id="stock_select">
                             <option value="block" selected disabled hidden>== 기업선택 ==</option>
+                        
                         {% for stock in stocks%}
-                            <option value="{{stock.name}} {{stock.stock_id}}">{{ stock.name }}</option>
+                            <option value="{{stock.stock_id}}">{{ stock.name }}</option>
                         {% endfor %}
                         
                         <input type="submit" value="검색" id="stock_submit">
@@ -278,9 +280,23 @@
                 var val = document.getElementById('stock_select').value;
                 if (val == 'block'){
                     alert('기업을 선택하세요');
-//                    이후 url 변경없이 다시 고침하는 방법
                 }
             }
+            
+            $("#stock_select").on('change', function(){
+                if(window.location.pathname.indexOf('issue')!=-1){
+                    $("#stock_select_form").attr("action", "stock/" +$(this).val());                    
+                }
+                else{
+                    if(window.location.pathname.indexOf('stock')!=-1){
+                        $("#stock_select_form").attr("action", $(this).val());
+
+                    }
+                    else $("#stock_select_form").attr("action", "stock/" +$(this).val());
+                }
+            })
+
+            
             
         </script>
 

@@ -11,17 +11,28 @@ stocks = Stockdb.objects.all()
 issues = Issuedb.objects.all()
 news = Newsdb.objects.all()
 
+def newsFind(issue_id):
+    data_dict = json.loads(issues[int(issue_id)].data)
+    news_numbers = data_dict['news']
+    news_dic_list = []
+    
+    for news_number in news_numbers:
+        news_data_dict = json.loads(news[news_number].data)
+        news_dic_list.append(news[news_number])
+    return(news_dic_list)
+
+
 
 def issueFind(stock_id):
     data_dict = json.loads(stocks[int(stock_id)].data)
     issue_numbers = data_dict['issues']
-    issue_list = []
+    issue_obj_list = []
     
     for issue_number in issue_numbers:
-        
-        issue_list.append(issues[issue_number].issue)
-        issue_data = json.loads(issues[issue_number].data)
-    return(issue_list)
+        issue_obj_list.append(issues[issue_number])
+#        issue_data = json.loads(issues[issue_number].data)
+#        추후 날짜 고려할 때 
+    return(issue_obj_list)
 
 
 
@@ -29,18 +40,31 @@ def index(request):
     return render(request, 'stock/index.html', {"stocks": stocks})
     
 
-def stock(request): 
+def stock(request, stock_id): 
+    stock_obj = get_object_or_404(Stockdb, stock_id=stock_id)
+    stock_name = stock_obj.name
+    issue_obj_lists = issueFind(stock_id)
+
     try: 
         if (request.method == "POST"):
-            stock_search = request.POST["stock_name"]
-            print(stock_search)
-            stock_info = stock_search.split()
-            stock_name = stock_info[0]
-            stock_id = stock_info[1]
-            issue_list = issueFind(stock_id)
+            return render(request, 'stock/stock.html', {"stocks": stocks,"stock_obj": stock_obj, "issue_obj_lists": issue_obj_lists})
+    except: return render(request, 'stock/stock.html', {"stocks": stocks,"stock_obj": stock_obj}) 
+    
+    return render(request, 'stock/stock.html', {"stocks": stocks,"stock_obj": stock_obj, "issue_obj_lists": issue_obj_lists})
 
-            return render(request, 'stock/stock.html', {"stocks": stocks,"stock_name": stock_name, "issues": issue_list})
-    except: return redirect('index')  
+
+
+def issue(request, stock_id, issue_id):
+    stock_obj = get_object_or_404(Stockdb, stock_id=stock_id)
+    issue_obj_lists = issueFind(stock_id)
+    issue_obj = get_object_or_404(Issuedb, issue_id=issue_id)
+    
+#    stock_obj에 대한 해당 issue가 없으면 404 error
+    
+    
+    return render(request, 'stock/issue.html', {"stocks": stocks, "stock_obj": stock_obj, "issue_obj_lists": issue_obj_lists})
+
+
 
 
 def database(request):
