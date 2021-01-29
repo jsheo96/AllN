@@ -11,15 +11,18 @@ stocks = Stockdb.objects.all()
 issues = Issuedb.objects.all()
 news = Newsdb.objects.all()
 
+
 def newsFind(issue_id):
     data_dict = json.loads(issues[int(issue_id)].data)
     news_numbers = data_dict['news']
-    news_dic_list = []
+    news_data_dict_list = []
+    news_dict_list = []
     
     for news_number in news_numbers:
         news_data_dict = json.loads(news[news_number].data)
-        news_dic_list.append(news[news_number])
-    return(news_dic_list)
+        news_data_dict_list.append(news_data_dict)
+        news_dict_list.append(news[news_number])
+    return(news_data_dict_list)
 
 
 
@@ -58,11 +61,19 @@ def issue(request, stock_id, issue_id):
     stock_obj = get_object_or_404(Stockdb, stock_id=stock_id)
     issue_obj_lists = issueFind(stock_id)
     issue_obj = get_object_or_404(Issuedb, issue_id=issue_id)
+    news_objs = newsFind(issue_id)
+    print(news_objs[0]['title'])
     
-#    stock_obj에 대한 해당 issue가 없으면 404 error
+    if issue_obj not in issue_obj_lists:
+        raise Http404("Question does not exist")
+#    stock_obj에 대한 해당 issue가 없으면 404 err
+
+    
+
     
     
-    return render(request, 'stock/issue.html', {"stocks": stocks, "stock_obj": stock_obj, "issue_obj_lists": issue_obj_lists})
+    return render(request, 'stock/issue.html', {"stocks": stocks, "stock_obj": stock_obj, "issue_obj_lists": issue_obj_lists, 'issue_obj': issue_obj, 'news_objs': news_objs})
+
 
 
 

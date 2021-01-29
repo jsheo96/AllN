@@ -1,7 +1,7 @@
 var acc = window.document.querySelector(".news_tab");
 var news_wrapper = acc.nextElementSibling;
 
-acc.addEventListener("click", function() {
+acc.addEventListener("click touchstart", function() {
     /* Toggle between adding and removing the "active" class,
         to highlight the button that controls the panel */
     acc.classList.toggle("active");

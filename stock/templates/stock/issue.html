@@ -43,7 +43,7 @@
 
     <section class="news_wrapper" style="clear:both">          
         <header id="issue_header">
-            <h2>이슈를 선택해주세요</h2>
+            <h2> {{issue_obj.issue}}</h2>
         </header>
 
         <div class="fact_opinion_content">
@@ -53,11 +53,9 @@
                 <div id="article_box" class="box">
                     <article class="articles">
                         <ul>
-                            <li>이슈 관련 기사가 표시됩니다.</li><br>
-                            <li>이슈 관련 기사가 표시됩니다.</li><br>
-                            <li>이슈 관련 기사가 표시됩니다.</li><br>
-                            <li>이슈 관련 기사가 표시됩니다.</li><br>
-                            <li>이슈 관련 기사가 표시됩니다.</li><br>
+                            {% for news_obj in news_objs %}
+                            <li><a href="{{news_obj.url}}">{{news_obj.title}}</a></li><br>
+                            {% endfor %}
                         </ul>
                     </article> 
                 </div>

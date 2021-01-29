@@ -7,6 +7,7 @@
         <meta name="description" content="~~~">
         <meta name="keywords" content="주식,신뢰,정리,종목이슈,의견,팩트,stock,issue,fact,opinion">
         <meta name="author" content="AllN">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
 <!--        <link rel="stylesheet" href="../../static/css/test.css">-->
 <!--        <link rel="stylesheet" href="{% static 'css/test.css' %}">  django에서 사용-->
@@ -96,6 +97,7 @@
             }
             
             .circle{
+                
                 background-color: #333;
                 width: 15px;
                 height: 15px;
@@ -284,16 +286,7 @@
             }
             
             $("#stock_select").on('change', function(){
-                if(window.location.pathname.indexOf('issue')!=-1){
-                    $("#stock_select_form").attr("action", "stock/" +$(this).val());                    
-                }
-                else{
-                    if(window.location.pathname.indexOf('stock')!=-1){
-                        $("#stock_select_form").attr("action", $(this).val());
-
-                    }
-                    else $("#stock_select_form").attr("action", "stock/" +$(this).val());
-                }
+                $("#stock_select_form").prop("action", "/stock/"+$(this).val()); 
             })
 
             

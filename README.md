@@ -20,7 +20,7 @@ python manage.py runserver /*0:8000*/
 ```
 
 ## 개발 중인 페이지 확인
-http://localhost:8000/stock
+http://localhost:8000
 
 ## News Database 이용 방법
 
