@@ -62,15 +62,11 @@ def issue(request, stock_id, issue_id):
     issue_obj_lists = issueFind(stock_id)
     issue_obj = get_object_or_404(Issuedb, issue_id=issue_id)
     news_objs = newsFind(issue_id)
-    print(news_objs[0]['title'])
     
     if issue_obj not in issue_obj_lists:
         raise Http404("Question does not exist")
 #    stock_obj에 대한 해당 issue가 없으면 404 err
 
-    
-
-    
     
     return render(request, 'stock/issue.html', {"stocks": stocks, "stock_obj": stock_obj, "issue_obj_lists": issue_obj_lists, 'issue_obj': issue_obj, 'news_objs': news_objs})
 

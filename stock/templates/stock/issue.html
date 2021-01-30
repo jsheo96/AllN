@@ -30,11 +30,13 @@
 
 
 
+<!--
             <div class="news_type">
                 종목 <input type="checkbox" name="news_type" value="stock_item" style="cursor: pointer;">  
                 섹터 <input type="checkbox" name="news_type" value="stock_sector" style="cursor: pointer;"> 
-<!--                            이후 input 주어지면 요청필요                                 -->
+                            이후 input 주어지면 요청필요                                 
             </div>    
+-->
         </div>
 
     </div>
@@ -54,7 +56,7 @@
                     <article class="articles">
                         <ul>
                             {% for news_obj in news_objs %}
-                            <li><a href="{{news_obj.url}}">{{news_obj.title}}</a></li><br>
+                            <li><a target="_blank" rel="noopener noreferrer" href="{{news_obj.url}}">{{news_obj.title}}</a></li><br>
                             {% endfor %}
                         </ul>
                     </article> 
